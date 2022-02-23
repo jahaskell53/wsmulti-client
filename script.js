@@ -2,7 +2,7 @@
 import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
 // $ = (selector) => document.querySelector(selector);
 //conects us to server
-const socket = io('https:www.//vrwikitest.com:3000')
+const socket = io('https://www.vrwikitest.com:3000')
 // on client slide
 socket.on('connect', () => {
     console.log("you connected with id: ", socket.id);
