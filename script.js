@@ -25,5 +25,5 @@ socket.on('send-controller', (left, right) => {
 window.setInterval(() => {
 // takes any aevent we want, and sends it to server
 // get pos data of controllers and send them to server.
-socket.emit('controller', document.querySelector('#left-con').getAttribute('position'), $('#right-con').getAttribute('position'))
+socket.emit('controller', document.querySelector('#left-con').getAttribute('position'), document.querySelector('#right-con').getAttribute('position'))
 }, 50)
