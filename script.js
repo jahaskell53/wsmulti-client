@@ -9,21 +9,30 @@ socket.on('connect', () => {
 })
 
 // when the client receives data from another client, map it to an object
-socket.on('send-controller', (left, right) => {
+socket.on('send-controller', (leftPosObj, leftRotObj, rightPosObj, rightRotObj) => {
+    const serverLeft = document.querySelector('#left-con-server');
+    const serverRight = document.querySelector('#right-con-server');
     // store left and right pos data of controller into a string (in a-frame pos format)
-    const leftPos = `${left.x} ${left.y} ${left.z}`;
-    const rightPos = `${right.x} ${right.y} ${right.z}`;
+    const leftPos = `${leftPosObj.x} ${leftPosObj.y} ${leftPosObj.z}`;
+    const leftRot = `${leftRotObj.x} ${leftRotObj.y} ${leftRotObj.z}`;
+    const rightPos = `${rightPosObj.x} ${rightPosObj.y} ${rightPosObj.z}`;
+    const rightRot = `${rightRotObj.x} ${rightRotObj.y} ${rightRotObj.z}`;
     // set VR object's pos to the left and right pos data strings
-    document.querySelector('#left-con-server').setAttribute('position', leftPos);
-    document.querySelector('#right-con-server').setAttribute('position', rightPos);
+    serverLeft.setAttribute('position', leftPosObj);
+    serverLeft.setAttribute('rotation', leftRotObj);
+    serverRight.setAttribute('position', rightPosObj);
+    serverRight.setAttribute('rotation', rightRotObj);
     // log them
-    console.log("left controller data: ", leftPos)
-    console.log("right controller data: ", rightPos)
+    console.log("left controller data: ", leftPosObj)
+    console.log("right controller data: ", rightPosObj)
 })
 
 // every few ms, send server a message with the pos data
 window.setInterval(() => {
 // takes any aevent we want, and sends it to server
 // get pos data of controllers and send them to server.
-socket.emit('controller', document.querySelector('#left-con').getAttribute('position'), document.querySelector('#right-con').getAttribute('position'))
+const left = document.querySelector('#left-con');
+const right = document.querySelector('#right-con');
+
+socket.emit('controller', left.getAttribute('position'), left.getAttribute('rotation'), right.getAttribute('position'),  right.getAttribute('rotation'))
 }, 50)
