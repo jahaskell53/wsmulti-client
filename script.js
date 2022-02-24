@@ -15,7 +15,7 @@ socket.on('send-controller', (left, right) => {
     const rightPos = `${right.x} ${right.y} ${right.z}`;
     // set VR object's pos to the left and right pos data strings
     document.querySelector('#left-con-server').setAttribute('position', leftPos);
-    $('#right-con-server').setAttribute('position', rightPos);
+    document.querySelector('#right-con-server').setAttribute('position', rightPos);
     // log them
     console.log("left controller data: ", leftPos)
     console.log("right controller data: ", rightPos)
