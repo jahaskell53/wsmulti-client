@@ -20,6 +20,7 @@ socket.on('client-joined', socketId => {
 
 // when the client receives data from another client, update the array of client objects and the corrsp graphical representation.
 socket.on('send-controller', (userObj) => {
+    console.log("received something on send-controller")
     // updates the pos in the array and the corresponding graphical representation
     playerList.updatePos(userObj);
 })
