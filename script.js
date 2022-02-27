@@ -1,6 +1,6 @@
 // get io from CDN
 import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
-import { getMyObj } from "./Controllers.js";
+import { createControllers, getMyObj } from "./Controllers.js";
 import PlayerList from "./PlayerList.js";
 //conects us to server. must be www bc i think we set up certificate with www
 const socket = io('https://www.vrwikitest.com:3000')
@@ -15,7 +15,9 @@ socket.on('connect', () => {
 const playerList = new PlayerList();
 // lsitens to client joined, and create player obj when a new client joins
 socket.on('client-joined', socketId => {
-    playerList.createPlayerObj(socketId);
+    const obj = playerList.createNewPlayerObj(socketId);
+    // creates controllers for a new player
+    createControllers(obj);
 })
 
 // when the client receives data from another client, update the array of client objects and the corrsp graphical representation.
