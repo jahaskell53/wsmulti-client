@@ -1,38 +1,33 @@
 // get io from CDN
 import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
-// $ = (selector) => document.querySelector(selector); // why is there no var declr?
+import { getMyObj } from "./Controllers";
+import PlayerList from "./PlayerList";
 //conects us to server. must be www bc i think we set up certificate with www
 const socket = io('https://www.vrwikitest.com:3000')
 // on client slide, show your id when you connect to a server
+var myId; // declare id for global scope
 socket.on('connect', () => {
     console.log("you connected with id: ", socket.id);
+    myId = socket.id; // store socket id into var, for sending with object later 
+});
+
+// when you connect, instantiates list of all player objects except yourself
+const playerList = new PlayerList();
+// lsitens to client joined, and create player obj when a new client joins
+socket.on('client-joined', socketId => {
+    playerList.createPlayerObj(socketId);
 })
 
-// when the client receives data from another client, map it to an object
-socket.on('send-controller', (leftPosObj, leftRotObj, rightPosObj, rightRotObj) => {
-    const serverLeft = document.querySelector('#left-con-server');
-    const serverRight = document.querySelector('#right-con-server');
-    // store left and right pos data of controller into a string (in a-frame pos format)
-    const leftPos = `${leftPosObj.x} ${leftPosObj.y} ${leftPosObj.z}`;
-    const leftRot = `${leftRotObj.x} ${leftRotObj.y} ${leftRotObj.z}`;
-    const rightPos = `${rightPosObj.x} ${rightPosObj.y} ${rightPosObj.z}`;
-    const rightRot = `${rightRotObj.x} ${rightRotObj.y} ${rightRotObj.z}`;
-    // set VR object's pos to the left and right pos data strings
-    serverLeft.setAttribute('position', leftPosObj);
-    serverLeft.setAttribute('rotation', leftRotObj);
-    serverRight.setAttribute('position', rightPosObj);
-    serverRight.setAttribute('rotation', rightRotObj);
-    // log them
-    console.log("left controller data: ", leftPosObj)
-    console.log("right controller data: ", rightPosObj)
+// when the client receives data from another client, update the array of client objects and the corrsp graphical representation.
+socket.on('send-controller', (userObj) => {
+    // updates the pos in the array and the corresponding graphical representation
+    playerList.updatePos(userObj);
 })
 
-// every few ms, send server a message with the pos data
+// every few ms, send server a message with my updated obj
 window.setInterval(() => {
-// takes any aevent we want, and sends it to server
 // get pos data of controllers and send them to server.
-const left = document.querySelector('#left-con');
-const right = document.querySelector('#right-con');
-
-socket.emit('controller', left.getAttribute('position'), left.getAttribute('rotation'), right.getAttribute('position'),  right.getAttribute('rotation'))
-}, 50)
+//TODO: change name to send controller so it is more clear that this channel is for server to receive controller data, and change other one to receive controller. 
+    socket.emit('controller', getMyObj(myId))
+                        }, 
+                50);

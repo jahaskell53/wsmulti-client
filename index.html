@@ -3,6 +3,8 @@
       <!--At the top so that body can use html syntax-->
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script> -->
+     <!--we use defer so we can grab the element after it has loaded-->
+     <script defer src="./script.js" type="module"></script>
 </head>
 <body>
     <a-scene id='first'>
@@ -15,10 +17,9 @@
         <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
         <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
         <a-sky color="#ECECEC"></a-sky>
+        <!--How do I create cones for all of the clients in the room-->
         <a-entity id="left-con" oculus-touch-controls="hand: left"></a-entity>
         <a-entity id="right-con" oculus-touch-controls="hand: right"></a-entity>
     </a-scene>
-    <!--At the bottom so that it can grab the element after it has loadded (with defer we make sure we only grab it after it has loaded)-->
-    <script defer src="./script.js" type="module"></script>
   </body>
 </html>
