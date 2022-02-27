@@ -1,4 +1,4 @@
-import { createControllers, updateControllers } from "./Controllers";
+import { createControllers, updateControllers } from "./Controllers.js";
 
 /**
  * class for the list of player objects connected to the game other than the current user. contains methods that allow to create a new player obj, to get player obj for a particular id. 
