@@ -31,4 +31,4 @@ window.setInterval(() => {
 //TODO: change name to send controller so it is more clear that this channel is for server to receive controller data, and change other one to receive controller. 
     socket.emit('controller', getMyObj(myId))
                         }, 
-                50);
+                500);

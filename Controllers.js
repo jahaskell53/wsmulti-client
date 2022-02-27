@@ -16,6 +16,7 @@ export function createControllers(userObj) {
  * @param {*} userObj 
  */
 export function updateControllers(userObj) {
+    console.log("controller left", document.getElementById(`${userObj.id}-left`));
     document.getElementById(`${userObj.id}-left`).setAttribute('position', userObj.left.pos);
     document.getElementById(`${userObj.id}-left`).setAttribute('rotation', userObj.left.rot);
     document.getElementById(`${userObj.id}-right`).setAttribute('position', userObj.right.pos);

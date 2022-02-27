@@ -53,7 +53,10 @@ export default class PlayerList {
         });
         console.log("corr client index: ", corrClient);
         if (corrClient.length == 1) {
+            console.log("before object", this.clientObjArr[index])
+            console.log("after object", receivedObj)
             this.clientObjArr[index] = receivedObj; 
+           
             // updates representation of that client's pos data graphically
         updateControllers(receivedObj);
         }
