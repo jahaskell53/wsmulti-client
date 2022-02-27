@@ -45,12 +45,13 @@ export default class PlayerList {
         // check if clientObj exists, if it does not, then we create it and the controller
         var index;
         const corrClient = this.clientObjArr.filter((clientObj, ind) => {
-            if (clientObj.id == receivedObj.id) {
+            if (clientObj.id === receivedObj.id) {
                 index = ind; 
                 return true;
             }
             return false;
         });
+        console.log("corr client index: ", corrClient);
         if (corrClient.length == 1) {
             this.clientObjArr[index] = receivedObj; 
             // updates representation of that client's pos data graphically
