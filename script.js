@@ -1,7 +1,7 @@
 // get io from CDN
 import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
-import { getMyObj } from "./Controllers";
-import PlayerList from "./PlayerList";
+import { getMyObj } from "./Controllers.js";
+import PlayerList from "./PlayerList.js";
 //conects us to server. must be www bc i think we set up certificate with www
 const socket = io('https://www.vrwikitest.com:3000')
 // on client slide, show your id when you connect to a server
