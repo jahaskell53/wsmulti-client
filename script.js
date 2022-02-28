@@ -1,10 +1,10 @@
 // get io from CDN
 // import { io } from "socket.io-client";
-import * as io from "https://unpkg.com/socket.io@4.4.1/dist/index.js";
+// import { io } from "https://unpkg.com/socket.io@4.4.1/dist/index.js";
 import { createControllers, getMyObj } from "./Controllers.js";
 import PlayerList from "./PlayerList.js";
 //conects us to server. must be www bc i think we set up certificate with www
-const socket = io();
+const socket = io("https://www.vrwikitest.com:3000");
 // on client slide, show your id when you connect to a server
 var myId; // declare id for global scope
 var playerList; // declared for global scope
