@@ -1,5 +1,5 @@
 // get io from CDN
-import { io } from "https://cdn.socket.io/4.3.2/socket.io.esm.min.js";
+import { io } from "socket.io-client";
 import { createControllers, getMyObj } from "./Controllers.js";
 import PlayerList from "./PlayerList.js";
 //conects us to server. must be www bc i think we set up certificate with www
@@ -7,7 +7,7 @@ const socket = io("https://www.vrwikitest.com:3000");
 // on client slide, show your id when you connect to a server
 var myId; // declare id for global scope
 var playerList; // declared for global scope
-socket.on("connection", () => {
+socket.on("connect", () => {
   console.log("you connected with id: ", socket.id);
   myId = socket.id; // store socket id into var, for sending with object later
   console.log("SOCKET ID: ", socket.id);
