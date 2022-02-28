@@ -1,5 +1,6 @@
 // get io from CDN
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
+import { io } from "./node_modules/socket.io-client/build/esm/index";
 import { createControllers, getMyObj } from "./Controllers.js";
 import PlayerList from "./PlayerList.js";
 //conects us to server. must be www bc i think we set up certificate with www
