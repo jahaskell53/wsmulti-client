@@ -39,8 +39,8 @@ export function getMyObj(id) {
     const leftPosString = `${leftPos.x} ${leftPos.y} ${leftPos.z}`;
     const leftRotString = `${leftRot.x} ${leftRot.y} ${leftRot.z}`;
     const rightPosString = `${rightPos.x} ${rightPos.y} ${rightPos.z}`;
-    const rightRotString = `${leftPos.x} ${leftPos.y} ${leftPos.z}`;
-    
+    const rightRotString = `${rightRot.x} ${rightRot.y} ${rightRot.z}`;
+    //TODO: change id to be key instead of value
     const posObj = { id: id, left: { pos: leftPosString, rot: leftRotString }, right: { pos: rightPosString, rot: rightRotString }};
     return posObj;
 }

@@ -13,12 +13,13 @@ export default class PlayerList {
      * takes in an id and creates a new player object with their id, and default loc and rot for left and right controlers 
      * @param {*} id 
      */
-    createNewPlayerObj(id) {
+    createNewPlayer(id) {
         console.log(`user ${id} joined`);
         const userObj = {id: id, left: {pos: `0 0 0`, rot: `0 0 0`}, right: {pos: `0 0 0`, rot: `0 0 0`}};
         this.clientObjArr.push(userObj);
         console.log("new array of new user", clientObjArr);
-        return userObj;
+        // creates controllers for a new player
+        createControllers(userObj); 
     }
 
     /**
