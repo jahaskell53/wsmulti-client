@@ -1,6 +1,6 @@
 // get io from CDN
 // import { io } from "socket.io-client";
-import { io } from "https://unpkg.com/socket.io@4.4.1/dist/index.js";
+import * as io from "https://unpkg.com/socket.io@4.4.1/dist/index.js";
 import { createControllers, getMyObj } from "./Controllers.js";
 import PlayerList from "./PlayerList.js";
 //conects us to server. must be www bc i think we set up certificate with www
