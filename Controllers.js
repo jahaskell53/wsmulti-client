@@ -31,6 +31,7 @@ export function updateControllers(userObj) {
  * @returns 
  */
 export function getMyObj(id) {
+    if (id === null) throw 'there is no established connection to socket';
     const leftPos = document.getElementById("left-con").getAttribute('position');
     const leftRot = document.getElementById("left-con").getAttribute('rotation');
     const rightPos = document.getElementById("right-con").getAttribute('position');

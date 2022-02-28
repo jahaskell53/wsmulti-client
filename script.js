@@ -1,10 +1,10 @@
 // get io from CDN
 // import { io } from "socket.io-client";
-import { io } from "./node_modules/socket.io-client/build/esm/index";
+import { io } from "https://unpkg.com/socket.io@4.4.1/dist/index.js";
 import { createControllers, getMyObj } from "./Controllers.js";
 import PlayerList from "./PlayerList.js";
 //conects us to server. must be www bc i think we set up certificate with www
-const socket = io("https://www.vrwikitest.com:3000");
+const socket = io();
 // on client slide, show your id when you connect to a server
 var myId; // declare id for global scope
 var playerList; // declared for global scope
@@ -23,11 +23,16 @@ socket.on("user-joined", (socketId) => {
 
 // every few ms, send server a message with my updated obj
 window.setInterval(() => {
-  // get pos data of controllers and send them to server.
+  try {
+     // get pos data of controllers and send them to server.
   console.log("id sent every second: ", myId);
   console.log("object sent every second: ", getMyObj(myId));
-  //TODO: change name to send controller so it is more clear that this channel is for server to receive controller data, and change other one to receive controller.
-  socket.emit("update-to", getMyObj(myId));
+    socket.emit("update-to", getMyObj(myId));
+  }
+  catch(error) {
+    console.log(error)
+  }
+
 }, 500);
 
 // when the client receives data from another client, update the array of client objects and the corrsp graphical representation.

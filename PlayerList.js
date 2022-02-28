@@ -34,6 +34,7 @@ export default class PlayerList {
                 return obj;
             }
         }
+        // TODO: throw error
         return null;
     }
 
