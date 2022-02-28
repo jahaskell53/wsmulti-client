@@ -10,6 +10,8 @@ var playerList; // declared for global scope
 socket.on("connection", () => {
   console.log("you connected with id: ", socket.id);
   myId = socket.id; // store socket id into var, for sending with object later
+  console.log("SOCKET ID: ", socket.id);
+  console.log("SOCKET ID: ", myId);
   playerList = new PlayerList(); // when you connnect, initialize a new player lst
 });
 
