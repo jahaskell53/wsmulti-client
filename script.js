@@ -21,6 +21,7 @@ socket.on("user-joined", (socketId) => {
 // every few ms, send server a message with my updated obj
 window.setInterval(() => {
   // get pos data of controllers and send them to server.
+  console.log("id sent every second: ", myId);
   console.log("object sent every second: ", getMyObj(myId));
   //TODO: change name to send controller so it is more clear that this channel is for server to receive controller data, and change other one to receive controller.
   socket.emit("update-to", getMyObj(myId));
