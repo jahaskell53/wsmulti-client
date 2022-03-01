@@ -10,6 +10,7 @@ export function createControllers(userObj) {
     const right = document.createElement('a-cone')
     left.id =  `${userObj.id}-left`
     right.id =  `${userObj.id}-right`
+    console.log(`new controllers for player ${userObj.id} are being created here`)
 }
 
 /**
@@ -17,7 +18,7 @@ export function createControllers(userObj) {
  * @param {*} userObj 
  */
 export function updateControllers(userObj) {
-    console.log("all cones", document.querySelector("a-cone"))
+    console.log("all cones", document.querySelector("a-cone")[0])
     console.log("controller left", document.getElementById(`${userObj.id}-left`));
     document.getElementById(`${userObj.id}-left`).setAttribute('position', userObj.left.pos);
     document.getElementById(`${userObj.id}-left`).setAttribute('rotation', userObj.left.rot);
