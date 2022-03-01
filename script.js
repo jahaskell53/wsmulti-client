@@ -80,8 +80,8 @@ window.setInterval(() => {
   const tweetball = document.createElement('a-sphere');
   tweetball.setAttribute("radius", `0.1`);
   tweetball.setAttribute("color", `#000000`);
+  const numFs = fakeData.filter(x => x === 'f').length;
   const color = Math.round(255 * numFs / 15);
-    const numFs = fakeData.filter(x => x === 'f').length;
   tweetball.setAttribute("color", `rgb(${color}, 0, 0)`);
   tweetball.setAttribute("position", `0 ${fakeData[currIndex].length / 20} -3`)
   console.log("tweetball received: ");
