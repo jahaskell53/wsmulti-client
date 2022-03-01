@@ -18,14 +18,18 @@ export function createControllers(userObj) {
     // geometry="primitive: cone; radiusBottom: 1; radiusTop: 0.1"
     left.setAttribute('geometry', {
         primitive: 'cone',
-        height: 0.5,
+        height: 0.3,
         radiusBottom: 0.1,
         radiusTop: 0.01,
-    })
+    });
     left.setAttribute("color", `#FFC65D`);
     right.setAttribute("id", `${sliced}-right`);
-    right.setAttribute("height", `0.5`);
-    right.setAttribute("radiusBottom", `0.1`);
+    right.setAttribute('geometry', {
+        primitive: 'cone',
+        height: 0.3,
+        radiusBottom: 0.1,
+        radiusTop: 0.01,
+    });
     right.setAttribute("color", `#7BC8A4`);
     console.log("controller left id: ", left.id);
     console.log(`new controllers for player ${userObj.id} are being created here`)
