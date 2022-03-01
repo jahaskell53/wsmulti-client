@@ -86,6 +86,7 @@ window.setInterval(() => {
   tweetball.setAttribute("position", `0 ${fakeData[currIndex].length / 20} -3`)
   console.log("tweetball received: ");
  currIndex = currIndex % fakeData.length;
+ console.log("index", currIndex);
   scene.appendChild(tweetball);
 }, 1000);
 
