@@ -17,6 +17,7 @@ export function createControllers(userObj) {
  * @param {*} userObj 
  */
 export function updateControllers(userObj) {
+    console.log("all cones", document.querySelector("a-cone"))
     console.log("controller left", document.getElementById(`${userObj.id}-left`));
     document.getElementById(`${userObj.id}-left`).setAttribute('position', userObj.left.pos);
     document.getElementById(`${userObj.id}-left`).setAttribute('rotation', userObj.left.rot);
