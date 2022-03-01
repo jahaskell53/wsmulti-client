@@ -44,13 +44,17 @@ window.setInterval(() => {
 }, 500);
 
 const fakeData = ["hello this is my favorite pizza", "I like to find elements with pizza", "erdsddfsdfsdsfsd", "hi"]
-const currIndex = 0;
+var currIndex = 0;
+var scene = document.querySelector('a-scene');
 window.setInterval(() => {
   const tweetball = document.createElement('a-sphere');
   tweetball.setAttribute("radius", `0.1`);
   tweetball.setAttribute("color", `#FFFFF`);
+  v
   tweetball.setAttribute("position", `${fakeData[currIndex].length / 10} ${tweetball.getAttribute("position").y} ${tweetball.getAttribute("position").z}`)
   console.log("tweetball received: ");
+  currIndex++;
+  scene.appendChild(tweetball);
 }, 1000);
 
 // when the client receives data from another client, update the array of client objects and the corrsp graphical representation.
