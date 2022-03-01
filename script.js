@@ -79,13 +79,15 @@ var scene = document.querySelector('a-scene');
 window.setInterval(() => {
   const tweetball = document.createElement('a-sphere');
   tweetball.setAttribute("radius", `0.1`);
-  const numFs = fakeData.filter(x => x === 'f').length;
-  tweetball.setAttribute("color", `rgb(${255 * numFs / 15}, 255, 255)`);
-  const numAs = fakeData.filter(x => x === 'a').length;
-  tweetball.setAttribute("radius", `${numAs * 0.05}`);
+  // const numFs = fakeData.filter(x => x === 'f').length;
+  // tweetball.setAttribute("color", `rgb(${255 * numFs / 15}, 0, 0)`);
+  tweetball.setAttribute("color", `#000000`);
+  // const numAs = fakeData.filter(x => x === 'a').length;
+  // console.log(numAs, numFs, "number of as");
+  // tweetball.setAttribute("radius", `${numAs * 0.1}`);
   tweetball.setAttribute("position", `1 ${fakeData[currIndex].length / 10} -3`)
   console.log("tweetball received: ");
-  if (currIndex < fakeData.length) {
+  if (currIndex < fakeData.length - 1) {
     currIndex++;
   }
   else {
