@@ -50,7 +50,6 @@ window.setInterval(() => {
   const tweetball = document.createElement('a-sphere');
   tweetball.setAttribute("radius", `0.1`);
   tweetball.setAttribute("color", `#FFFFF`);
-  v
   tweetball.setAttribute("position", `${fakeData[currIndex].length / 10} ${tweetball.getAttribute("position").y} ${tweetball.getAttribute("position").z}`)
   console.log("tweetball received: ");
   currIndex++;
