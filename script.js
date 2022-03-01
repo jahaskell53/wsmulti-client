@@ -85,12 +85,7 @@ window.setInterval(() => {
   tweetball.setAttribute("radius", `${color}`);
   tweetball.setAttribute("position", `0 ${fakeData[currIndex].length / 20} -3`)
   console.log("tweetball received: ");
-  if (currIndex < fakeData.length) {
-    currIndex++;
-  }
-  else {
-    currIndex = 0;
-  }
+ currIndex = currIndex % fakeData.length;
   scene.appendChild(tweetball);
 }, 1000);
 
