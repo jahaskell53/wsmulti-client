@@ -21,6 +21,14 @@ socket.on("user-joined", (socketId) => {
   playerList.createNewPlayer(socketId);
 });
 
+socket.on('tweet', (tweet) => {
+  // Our response
+  const tweetball = document.createElement('a-sphere');
+  tweetball.setAttribute("radius", `0.1`);
+  tweetball.setAttribute("color", `#FFFFF`);
+  console.log("tweetball received: ");
+});
+
 // every few ms, send server a message with my updated obj
 window.setInterval(() => {
   try {
