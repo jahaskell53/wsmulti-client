@@ -73,14 +73,17 @@ const fakeData = ["The best way to learn about something is to do it yourself!",
   "Be positive in everything that you do, because a negative attitude will only bring down those around you as well", 
   "Embrace change and new experiences with open arms, because they're what make life interesting!",
   "Appreciate all of the amazing things that life has to offer and be grateful for every moment that you spend alive!"];
-  
+
 var currIndex = 0;
 var scene = document.querySelector('a-scene');
 window.setInterval(() => {
   const tweetball = document.createElement('a-sphere');
   tweetball.setAttribute("radius", `0.1`);
-  tweetball.setAttribute("color", `#000000`);
-  tweetball.setAttribute("position", `0 ${fakeData[currIndex].length / 10} 0`)
+  const numFs = fakeData.filter(x => x === 'f').length;
+  tweetball.setAttribute("color", `rgb(${255 * numFs / 15}, 255, 255)`);
+  const numAs = fakeData.filter(x => x === 'a').length;
+  tweetball.setAttribute("radius", `${numAs * 0.05}`);
+  tweetball.setAttribute("position", `1 ${fakeData[currIndex].length / 10} -3`)
   console.log("tweetball received: ");
   if (currIndex < fakeData.length) {
     currIndex++;
