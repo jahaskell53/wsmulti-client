@@ -5,11 +5,12 @@
  */
 export function createControllers(userObj) {
     //TODO: check if it is possible to create an element using js with a-frame
-    console.log("THIS IS HERE IF CONTROLLERS ARE GETTING CREATED")
+    // console.log("THIS IS HERE IF CONTROLLERS ARE GETTING CREATED")
+    const sliced = userObj.id.slice(0, 5);
     const left = document.createElement('a-cone')
     const right = document.createElement('a-cone')
-    left.id =  `${userObj.id}-left`
-    right.id =  `${userObj.id}-right`
+    left.id =  `${sliced}-left`
+    right.id =  `${sliced}-right`
     console.log(`new controllers for player ${userObj.id} are being created here`)
 }
 
@@ -18,9 +19,10 @@ export function createControllers(userObj) {
  * @param {*} userObj 
  */
 export function updateControllers(userObj) {
+    const sliced = userObj.id.slice(0, 5);
     console.log("all cones", document.querySelector("a-cone")[0])
-    console.log("controller left", document.getElementById(`${userObj.id}-left`));
-    console.log("controller left with query selector", document.querySelector(`#${userObj.id}-left`));
+    console.log("controller left", document.getElementById(`${sliced}-left`));
+    console.log("controller left with query selector", document.querySelector(`#${sliced}-left`));
     document.getElementById(`${userObj.id}-left`).setAttribute('position', userObj.left.pos);
     document.getElementById(`${userObj.id}-left`).setAttribute('rotation', userObj.left.rot);
     document.getElementById(`${userObj.id}-right`).setAttribute('position', userObj.right.pos);
