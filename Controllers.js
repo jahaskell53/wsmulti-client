@@ -12,7 +12,7 @@ export function createControllers(userObj) {
     const scene = document.querySelector('a-scene');
     scene.appendChild(left);
     scene.appendChild(right);
-    left.setAttribute("id", `${sliced}-left`);
+    left.setAttribute("id", `a${sliced}-left`);
     // left.setAttribute("height", `0.5`);
     // left.setAttribute("radiusBottom", `0.1`);
     // geometry="primitive: cone; radiusBottom: 1; radiusTop: 0.1"
@@ -23,7 +23,7 @@ export function createControllers(userObj) {
         radiusTop: 0.01,
     });
     left.setAttribute("color", `#FFC65D`);
-    right.setAttribute("id", `${sliced}-right`);
+    right.setAttribute("id", `a${sliced}-right`);
     right.setAttribute('geometry', {
         primitive: 'cone',
         height: 0.3,
@@ -42,12 +42,12 @@ export function createControllers(userObj) {
 export function updateControllers(userObj) {
     const sliced = userObj.id.slice(0, 5);
     console.log("all cones", document.querySelector("a-cone"));
-    console.log("controller left", document.getElementById(`${sliced}-left`));
-    console.log("controller left with query selector", document.querySelector(`#${sliced}-left`));
-    document.querySelector(`#${sliced}-left`).setAttribute('position', userObj.left.pos);
-    document.querySelector(`#${sliced}-left`).setAttribute('rotation', userObj.left.rot);
-    document.querySelector(`#${sliced}-right`).setAttribute('position', userObj.right.pos);
-    document.querySelector(`#${sliced}-right`).setAttribute('rotation', userObj.right.rot);
+    console.log("controller left", document.getElementById(`a${sliced}-left`));
+    console.log("controller left with query selector", document.querySelector(`#a${sliced}-left`));
+    document.querySelector(`#a${sliced}-left`).setAttribute('position', userObj.left.pos);
+    document.querySelector(`#a${sliced}-left`).setAttribute('rotation', userObj.left.rot);
+    document.querySelector(`#a${sliced}-right`).setAttribute('position', userObj.right.pos);
+    document.querySelector(`#a${sliced}-right`).setAttribute('rotation', userObj.right.rot);
 }
 
 /**
