@@ -85,7 +85,7 @@ window.setInterval(() => {
   // const numAs = fakeData.filter(x => x === 'a').length;
   // console.log(numAs, numFs, "number of as");
   // tweetball.setAttribute("radius", `${numAs * 0.1}`);
-  tweetball.setAttribute("position", `1 ${fakeData[currIndex].length / 10} -3`)
+  tweetball.setAttribute("position", `0 ${fakeData[currIndex].length / 10} 0`)
   console.log("tweetball received: ");
   if (currIndex < fakeData.length - 1) {
     currIndex++;
