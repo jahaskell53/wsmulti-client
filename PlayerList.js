@@ -62,9 +62,12 @@ export default class PlayerList {
            
             // updates representation of that client's pos data graphically
         updateControllers(receivedObj);
+        console.log("controllers is not being called :(")
         }
+        // if there is no object, then create an object
         else {
             this.clientObjArr.push(receivedObj);
+            console.log("Controllers is being called")
             createControllers(receivedObj);
         }
         
