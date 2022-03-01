@@ -41,7 +41,7 @@ window.setInterval(() => {
     console.log(error)
   }
 
-}, 500);
+}, 50);
 
 const fakeData = ["The best way to learn about something is to do it yourself!", 
   "Don't be afraid to ask for help when you need it",
