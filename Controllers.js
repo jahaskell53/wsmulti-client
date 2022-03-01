@@ -13,7 +13,13 @@ export function createControllers(userObj) {
     scene.appendChild(left);
     scene.appendChild(right);
     left.setAttribute("id", `${sliced}-left`);
+    left.setAttribute("height", `1.5`);
+    left.setAttribute("radius", `0.5`);
+    left.setAttribute("color", `#FFC65D`);
     right.setAttribute("id", `${sliced}-right`);
+    right.setAttribute("height", `1.5`);
+    right.setAttribute("radius", `0.5`);
+    right.setAttribute("color", `#7BC8A4`);
     console.log("controller left id: ", left.id);
     console.log(`new controllers for player ${userObj.id} are being created here`)
 }
