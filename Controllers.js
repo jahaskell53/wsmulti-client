@@ -24,10 +24,10 @@ export function updateControllers(userObj) {
     console.log("all cones", document.querySelector("a-cone"));
     console.log("controller left", document.getElementById(`${sliced}-left`));
     console.log("controller left with query selector", document.querySelector(`#${sliced}-left`));
-    document.getElementById(`${sliced}-left`).setAttribute('position', userObj.left.pos);
-    document.getElementById(`${sliced}-left`).setAttribute('rotation', userObj.left.rot);
-    document.getElementById(`${sliced}-right`).setAttribute('position', userObj.right.pos);
-    document.getElementById(`${sliced}-right`).setAttribute('rotation', userObj.right.rot);
+    document.querySelector(`#${sliced}-left`).setAttribute('position', userObj.left.pos);
+    document.querySelector(`#${sliced}-left`).setAttribute('rotation', userObj.left.rot);
+    document.querySelector(`#${sliced}-right`).setAttribute('position', userObj.right.pos);
+    document.querySelector(`#${sliced}-right`).setAttribute('rotation', userObj.right.rot);
 }
 
 /**
