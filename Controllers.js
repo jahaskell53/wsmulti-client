@@ -13,8 +13,15 @@ export function createControllers(userObj) {
     scene.appendChild(left);
     scene.appendChild(right);
     left.setAttribute("id", `${sliced}-left`);
-    left.setAttribute("height", `0.5`);
-    left.setAttribute("radiusBottom", `0.1`);
+    // left.setAttribute("height", `0.5`);
+    // left.setAttribute("radiusBottom", `0.1`);
+    // geometry="primitive: cone; radiusBottom: 1; radiusTop: 0.1"
+    left.setAttribute('geometry', {
+        primitive: 'cone',
+        height: 0.5,
+        radiusBottom: 0.1,
+        radiusTop: 0.01,
+    })
     left.setAttribute("color", `#FFC65D`);
     right.setAttribute("id", `${sliced}-right`);
     right.setAttribute("height", `0.5`);
