@@ -82,7 +82,7 @@ window.setInterval(() => {
   tweetball.setAttribute("color", `#000000`);
   const numFs = fakeData.filter(x => x === 'f').length;
   const color = Math.round(255 * numFs / 15);
-  tweetball.setAttribute("color", `rgb(${color}, 0, 0)`);
+  tweetball.setAttribute("radius", `${color}`);
   tweetball.setAttribute("position", `0 ${fakeData[currIndex].length / 20} -3`)
   console.log("tweetball received: ");
   if (currIndex < fakeData.length) {
