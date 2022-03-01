@@ -49,8 +49,8 @@ var scene = document.querySelector('a-scene');
 window.setInterval(() => {
   const tweetball = document.createElement('a-sphere');
   tweetball.setAttribute("radius", `0.1`);
-  tweetball.setAttribute("color", `#FFFFF`);
-  tweetball.setAttribute("position", `${fakeData[currIndex].length / 10} ${tweetball.getAttribute("position").y} ${tweetball.getAttribute("position").z}`)
+  tweetball.setAttribute("color", `#000000`);
+  tweetball.setAttribute("position", `${tweetball.getAttribute("position").x} ${tweetball.getAttribute("position").y} ${fakeData[currIndex].length / 10}`)
   console.log("tweetball received: ");
   currIndex++;
   scene.appendChild(tweetball);
