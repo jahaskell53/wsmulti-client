@@ -21,13 +21,13 @@ export function createControllers(userObj) {
  */
 export function updateControllers(userObj) {
     const sliced = userObj.id.slice(0, 5);
-    console.log("all cones", document.querySelector("a-cone")[0])
+    console.log("all cones", document.querySelector("a-cone"));
     console.log("controller left", document.getElementById(`${sliced}-left`));
     console.log("controller left with query selector", document.querySelector(`#${sliced}-left`));
-    document.getElementById(`${userObj.id}-left`).setAttribute('position', userObj.left.pos);
-    document.getElementById(`${userObj.id}-left`).setAttribute('rotation', userObj.left.rot);
-    document.getElementById(`${userObj.id}-right`).setAttribute('position', userObj.right.pos);
-    document.getElementById(`${userObj.id}-right`).setAttribute('rotation', userObj.right.rot);
+    document.getElementById(`${sliced}-left`).setAttribute('position', userObj.left.pos);
+    document.getElementById(`${sliced}-left`).setAttribute('rotation', userObj.left.rot);
+    document.getElementById(`${sliced}-right`).setAttribute('position', userObj.right.pos);
+    document.getElementById(`${sliced}-right`).setAttribute('rotation', userObj.right.rot);
 }
 
 /**
