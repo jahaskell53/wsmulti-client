@@ -21,7 +21,8 @@ export default class PlayerList {
       right: { pos: `0 0 0`, rot: `0 0 0` },
     };
     this.clientObjArr.push(userObj);
-    console.log("new array of new user", this.clientObjArr);
+    console.log("USER OBJECT THAT IS NULL", userObj);
+    console.log("USER ID THAT IS NULL", id);
     // creates controllers for a new player
     createControllers(userObj);
   }
@@ -57,20 +58,15 @@ export default class PlayerList {
       }
       return false;
     });
-    console.log("corr client index: ", corrClient);
     if (corrClient.length == 1) {
-      console.log("before object", this.clientObjArr[index]);
-      console.log("after object", receivedObj);
       this.clientObjArr[index] = receivedObj;
 
       // updates representation of that client's pos data graphically
       updateControllers(receivedObj);
-      console.log("controllers is not being called :(");
     }
     // if there is no object, then create an object
     else {
       this.clientObjArr.push(receivedObj);
-      console.log("Controllers is being called");
       createControllers(receivedObj);
     }
   }
