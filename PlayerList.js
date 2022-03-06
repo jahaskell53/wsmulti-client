@@ -5,7 +5,7 @@ import { createControllers, updateControllers } from "./Controllers.js";
  */
 export default class PlayerList {
   constructor() {
-    // initialize empty lsit of client objects (since at start there are no clients)
+    // initialize empty list of client objects (since at start there are no clients)
     this.clientObjArr = [];
   }
 
@@ -21,18 +21,8 @@ export default class PlayerList {
       right: { pos: `0 0 0`, rot: `0 0 0` },
     };
     this.clientObjArr.push(userObj);
-    console.log("USER OBJECT THAT IS NULL", userObj);
-    console.log("USER ID THAT IS NULL", id);
     // creates controllers for a new player
-    try {
-      createControllers(userObj);
-    } catch(err) {
-      console.error(err);
-      console.error(
-        "create controllers failed in create new player at",
-        new Date()
-      );
-    }
+    createControllers(userObj);
   }
 
   /**
@@ -75,13 +65,7 @@ export default class PlayerList {
     // if there is no object, then create an object
     else {
       this.clientObjArr.push(receivedObj);
-
-      try {
-        createControllers(receivedObj);
-      } catch(err) {
-        console.error(err);
-        console.error("create controllers failed in updatePos", new Date());
-      }
+      createControllers(receivedObj);
     }
   }
 }

@@ -30,10 +30,6 @@ export function createControllers(userObj) {
     radiusTop: 0.01,
   });
   right.setAttribute("color", `#7BC8A4`);
-  console.log("controller left id: ", left.id);
-  console.log(
-    `new controllers for player ${userObj.id} are being created here`
-  );
 }
 
 /**
@@ -42,12 +38,6 @@ export function createControllers(userObj) {
  */
 export function updateControllers(userObj) {
   const sliced = userObj.id.slice(0, 5);
-  console.log("all cones", document.querySelector("a-cone"));
-  console.log("controller left", document.getElementById(`a${sliced}-left`));
-  console.log(
-    "controller left with query selector",
-    document.querySelector(`#a${sliced}-left`)
-  );
   document
     .querySelector(`#a${sliced}-left`)
     .setAttribute("position", userObj.left.pos);
@@ -69,7 +59,7 @@ export function updateControllers(userObj) {
  * @returns
  */
 export function getMyObj(id) {
-  if (id === null) throw "there is no established connection to socket";
+  if (id === null) throw "id is null, there is no established connection to socket";
   const leftPos = document.getElementById("left-con").getAttribute("position");
   const leftRot = document.getElementById("left-con").getAttribute("rotation");
   const rightPos = document
