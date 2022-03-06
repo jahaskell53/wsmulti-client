@@ -5,7 +5,6 @@
  */
 export function createControllers(userObj) {
   //TODO: check if it is possible to create an element using js with a-frame
-  // console.log("THIS IS HERE IF CONTROLLERS ARE GETTING CREATED")
   const sliced = userObj.id.slice(0, 5);
   const left = document.createElement("a-cone");
   const right = document.createElement("a-cone");

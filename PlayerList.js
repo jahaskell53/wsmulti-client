@@ -24,7 +24,15 @@ export default class PlayerList {
     console.log("USER OBJECT THAT IS NULL", userObj);
     console.log("USER ID THAT IS NULL", id);
     // creates controllers for a new player
-    createControllers(userObj);
+    try {
+      createControllers(userObj);
+    } catch (err) {
+      console.error(err);
+      console.log(
+        "create controllers failed in create new player at",
+        +new Date()
+      );
+    }
   }
 
   /**
@@ -67,7 +75,13 @@ export default class PlayerList {
     // if there is no object, then create an object
     else {
       this.clientObjArr.push(receivedObj);
-      createControllers(receivedObj);
+
+      try {
+        createControllers(receivedObj);
+      } catch (err) {
+        console.error(err);
+        console.log("create controllers failed in updatePos", +new Date());
+      }
     }
   }
 }
