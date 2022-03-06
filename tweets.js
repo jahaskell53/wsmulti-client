@@ -1,4 +1,4 @@
-import fakeData from "./testData";
+import fakeData from "./testData.js";
 
 // TWEET DATA REPRESENTATION
 var currIndex = 0;
