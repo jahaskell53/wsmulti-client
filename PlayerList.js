@@ -28,9 +28,9 @@ export default class PlayerList {
       createControllers(userObj);
     } catch(err) {
       console.error(err);
-      console.log(
+      console.error(
         "create controllers failed in create new player at",
-        Date()
+        new Date()
       );
     }
   }
@@ -80,7 +80,7 @@ export default class PlayerList {
         createControllers(receivedObj);
       } catch(err) {
         console.error(err);
-        console.log("create controllers failed in updatePos", Date());
+        console.error("create controllers failed in updatePos", new Date());
       }
     }
   }
