@@ -15,15 +15,15 @@ socket.on("user-joined", (socketId) => {
 });
 
 // every few ms, send server a message with my updated obj
-const interval = 50;
+const INTERVAL = 50;
 window.setInterval(() => {
   try {
     // get pos data of controllers and send them to server.
-    socket.emit("update-to", createMyObj(socket.id));
+    socket.emit("update-to", createMyObj(socket.id), socket.id);
   } catch (error) {
     console.error("failed to get object from id: ", error);
   }
-}, interval);
+}, INTERVAL);
 
 // when the client receives data from another client, update the array of client objects and the corrsp graphical representation.
 socket.on("update-send", (userObj, clientId) => {
