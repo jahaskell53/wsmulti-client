@@ -21,7 +21,7 @@ window.setInterval(() => {
     // get pos data of controllers and send them to server.
     socket.emit("update-to", createMyObj(socket.id), socket.id);
   } catch (error) {
-    console.error("failed to get object from id: ", error);
+    console.error( error);
   }
 }, INTERVAL);
 

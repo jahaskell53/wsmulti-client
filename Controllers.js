@@ -66,6 +66,7 @@ export function updateControllers(userObj, clientId) {
     .setAttribute("rotation", userObj.right.rot);
   }
   catch(error) {
+      console.log("client id: ", clientId)
     createControllers(userObj, clientId)
     // updateControllers(userObj, clientId)
   }
