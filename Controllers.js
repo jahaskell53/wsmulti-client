@@ -34,8 +34,16 @@ export function createControllers(userObj, clientId) {
     radiusTop: 0.01,
   });
   right.setAttribute("color", `#7BC8A4`);
-
-  updateControllers(userObj, clientId);
+  // intialization of positon
+  // TODO: factor out to helper function
+  left
+    .setAttribute("position", userObj.left.pos);
+ left
+    .setAttribute("rotation", userObj.left.rot);
+  right
+    .setAttribute("position", userObj.right.pos);
+ right
+    .setAttribute("rotation", userObj.right.rot);
 }
 
 /**
@@ -43,7 +51,9 @@ export function createControllers(userObj, clientId) {
  * @param {*} userObj
  */
 export function updateControllers(userObj, clientId) {
+    // TODO: factor out to helper function
   const sliced = clientId.slice(0, 5);
+  // TODO: factor out name to var (or helper arrow function!)
   document
     .querySelector(`#a${sliced}-left`)
     .setAttribute("position", userObj.left.pos);
