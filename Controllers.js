@@ -48,6 +48,7 @@ export function createControllers(userObj, clientId) {
  */
 export function updateControllers(userObj, clientId) {
   // TODO: factor out to helper function
+  try {
   const sliced = clientId.slice(0, 5);
   // TODO: factor out name to var (or helper arrow function!)
   console.log("User object: ", userObj);
@@ -63,6 +64,11 @@ export function updateControllers(userObj, clientId) {
   document
     .querySelector(`#a${sliced}-right`)
     .setAttribute("rotation", userObj.right.rot);
+  }
+  catch(error) {
+    createControllers(userObj, clientId)
+    // updateControllers(userObj, clientId)
+  }
 }
 
 /**

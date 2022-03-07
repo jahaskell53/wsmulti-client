@@ -62,20 +62,22 @@ export default class PlayerList {
     //   return false;
     // });
     // create an object for that key of the id if it is not already crewated
-
-    if (this.clientsObj[clientId] !== null) {
-    //   this.clientsObj[index] = receivedObj;
-        this.clientsObj[clientId] = receivedObj;
-      // updates representation of that client's pos data graphically
-      // TODO: could handle null logic in updateControllers
-      updateControllers(receivedObj, clientId);
-    }
-    // if there is no object, then create an object
-    else {
-      this.clientsObj[clientId] = receivedObj;
-    //   this.clientObjArr.push(receivedObj);
-    /// TODO: add id as argument
-      createControllers(receivedObj, clientId);
-    }
+    // TODO: do we really need to store an object of clients?
+    this.clientsObj[clientId] = receivedObj;
+    updateControllers(receivedObj);
+    // if (this.clientsObj[clientId] !== null) {
+    // //   this.clientsObj[index] = receivedObj;
+    //     this.clientsObj[clientId] = receivedObj;
+    //   // updates representation of that client's pos data graphically
+    //   // TODO: could handle null logic in updateControllers
+    //   updateControllers(receivedObj, clientId);
+    // }
+    // // if there is no object, then create an object
+    // else {
+    //   this.clientsObj[clientId] = receivedObj;
+    // //   this.clientObjArr.push(receivedObj);
+    // /// TODO: add id as argument
+    //   createControllers(receivedObj, clientId);
+    // }
   }
 }
