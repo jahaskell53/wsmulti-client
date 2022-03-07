@@ -64,7 +64,7 @@ export default class PlayerList {
     // create an object for that key of the id if it is not already crewated
     // TODO: do we really need to store an object of clients?
     this.clientsObj[clientId] = receivedObj;
-    updateControllers(receivedObj);
+    updateControllers(receivedObj, clientId);
     // if (this.clientsObj[clientId] !== null) {
     // //   this.clientsObj[index] = receivedObj;
     //     this.clientsObj[clientId] = receivedObj;
