@@ -1,16 +1,18 @@
+// TODO: replace filename with lowercase
 /*
  * takes in a user object and creates two controllers (left and right)
  * with id of the user's socket id + a left/right extension
  * @param {*} userObj
  */
-export function createControllers(userObj) {
-  //TODO: check if it is possible to create an element using js with a-frame
-  const sliced = userObj.id.slice(0, 5);
+export function createControllers(userObj, clientId) {
+  // TODO: replace with entire idea
+  const sliced = clientId.slice(0, 5);
   const left = document.createElement("a-cone");
   const right = document.createElement("a-cone");
   const scene = document.querySelector("a-scene");
   scene.appendChild(left);
   scene.appendChild(right);
+  // TODO: put left on front
   left.setAttribute("id", `a${sliced}-left`);
   // left.setAttribute("height", `0.5`);
   // left.setAttribute("radiusBottom", `0.1`);
@@ -22,7 +24,9 @@ export function createControllers(userObj) {
     radiusTop: 0.01,
   });
   left.setAttribute("color", `#FFC65D`);
+  // TODO: replace with right in front
   right.setAttribute("id", `a${sliced}-right`);
+  // TODO: replace with constants
   right.setAttribute("geometry", {
     primitive: "cone",
     height: 0.3,
@@ -30,14 +34,16 @@ export function createControllers(userObj) {
     radiusTop: 0.01,
   });
   right.setAttribute("color", `#7BC8A4`);
+
+  updateControllers(userObj, clientId);
 }
 
 /**
  * takes in a user object and sets the position of that user's controllers accordingly
  * @param {*} userObj
  */
-export function updateControllers(userObj) {
-  const sliced = userObj.id.slice(0, 5);
+export function updateControllers(userObj, clientId) {
+  const sliced = clientId.slice(0, 5);
   document
     .querySelector(`#a${sliced}-left`)
     .setAttribute("position", userObj.left.pos);
@@ -58,8 +64,9 @@ export function updateControllers(userObj) {
  * @param {*} id
  * @returns
  */
-export function getMyObj(id) {
-  if (id === null) throw "id is null, there is no established connection to socket";
+export function createMyObj(id) {
+  if (id === null)
+    throw "your id is null, there is no established connection to socket";
   const leftPos = document.getElementById("left-con").getAttribute("position");
   const leftRot = document.getElementById("left-con").getAttribute("rotation");
   const rightPos = document
@@ -74,8 +81,12 @@ export function getMyObj(id) {
   const rightPosString = `${rightPos.x} ${rightPos.y} ${rightPos.z}`;
   const rightRotString = `${rightRot.x} ${rightRot.y} ${rightRot.z}`;
   //TODO: change id to be key instead of value
+  //   const posObj = {
+  //     id: id,
+  //     left: { pos: leftPosString, rot: leftRotString },
+  //     right: { pos: rightPosString, rot: rightRotString },
+  //   };
   const posObj = {
-    id: id,
     left: { pos: leftPosString, rot: leftRotString },
     right: { pos: rightPosString, rot: rightRotString },
   };
