@@ -5,15 +5,13 @@
  * @param {*} userObj
  */
 export function createControllers(userObj, clientId) {
-  // TODO: replace with entire idea
-  const sliced = clientId.slice(0, 5);
   const left = document.createElement("a-cone");
   const right = document.createElement("a-cone");
   const scene = document.querySelector("a-scene");
   scene.appendChild(left);
   scene.appendChild(right);
   // TODO: put left on front
-  left.setAttribute("id", `a${sliced}-left`);
+  left.setAttribute("id", createLeftId(clientId));
   // left.setAttribute("height", `0.5`);
   // left.setAttribute("radiusBottom", `0.1`);
   // geometry="primitive: cone; radiusBottom: 1; radiusTop: 0.1"
@@ -25,7 +23,7 @@ export function createControllers(userObj, clientId) {
   });
   left.setAttribute("color", `#FFC65D`);
   // TODO: replace with right in front
-  right.setAttribute("id", `a${sliced}-right`);
+  right.setAttribute("id", createRightId(clientId));
   // TODO: replace with constants
   right.setAttribute("geometry", {
     primitive: "cone",
@@ -51,10 +49,10 @@ export function updateControllers(userObj, clientId) {
     const left = createLeftId(clientId);
     const right = createRightId(clientId);
 
-    document.querySelector(left).setAttribute("position", userObj.left.pos);
-    document.querySelector(left).setAttribute("rotation", userObj.left.rot);
-    document.querySelector(right).setAttribute("position", userObj.right.pos);
-    document.querySelector(right).setAttribute("rotation", userObj.right.rot);
+    document.getElementById(left).setAttribute("position", userObj.left.pos);
+    document.getElementById(left).setAttribute("rotation", userObj.left.rot);
+    document.getElementById(right).setAttribute("position", userObj.right.pos);
+    document.getElementById(right).setAttribute("rotation", userObj.right.rot);
   } catch (error) {
     console.log(error);
     console.log("WHY ISNT THIS WORKING");
@@ -72,7 +70,7 @@ export function updateControllers(userObj, clientId) {
  */
 function createIdUsingSuffix(userId, suffix) {
   const sliced = userId.slice(0, 5);
-  return `#a${sliced}-${suffix}`;
+  return `a${sliced}-${suffix}`;
 }
 
 /**
