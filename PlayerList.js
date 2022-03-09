@@ -5,8 +5,8 @@ import { createControllers, updateControllers } from "./controllers.js";
  */
 export default class PlayerList {
   constructor() {
-    // initialize empty list of client objects (since at start there are no clients)
-    this.clientsObj = [];
+    // initialize empty object of client objects (since at start there are no clients)
+    this.clientsObj = {};
   }
 
   /**
@@ -71,7 +71,7 @@ export default class PlayerList {
     // create an object for that key of the id if it is not already crewated
     this.clientsObj[clientId] = receivedObj;
     // TODO: this is getting called recursively
-    console.log("clients obj", this.clientsObj);
+    console.log("clients obj", JSON.stringify(this.clientsObj));
     updateControllers(receivedObj, clientId);
     // if (this.clientsObj[clientId] !== null) {
     // //   this.clientsObj[index] = receivedObj;
