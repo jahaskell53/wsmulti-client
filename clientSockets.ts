@@ -1,3 +1,4 @@
+import { io } from "socket.io-client";
 import { createMyObj } from "./controllers.js";
 import PlayerList from "./PlayerList.js";
 //conects us to server. must be www bc i think we set up certificate with www
