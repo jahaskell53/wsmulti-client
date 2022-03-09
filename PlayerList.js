@@ -70,7 +70,8 @@ export default class PlayerList {
     // });
     // create an object for that key of the id if it is not already crewated
     this.clientsObj[clientId] = receivedObj;
-    console.log("clients obj", this.clientsObj.toString);
+    // TODO: this is getting called recursively
+    console.log("clients obj", this.clientsObj.toString());
     updateControllers(receivedObj, clientId);
     // if (this.clientsObj[clientId] !== null) {
     // //   this.clientsObj[index] = receivedObj;

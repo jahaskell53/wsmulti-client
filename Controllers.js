@@ -23,6 +23,7 @@ export function createControllers(userObj, clientId) {
   });
   left.setAttribute("color", `#FFC65D`);
   // TODO: replace with right in front
+  console.log("right id created: ", createRightId(clientId));
   right.setAttribute("id", createRightId(clientId));
   // TODO: replace with constants
   right.setAttribute("geometry", {
@@ -48,15 +49,16 @@ export function updateControllers(userObj, clientId) {
   try {
     const left = createLeftId(clientId);
     const right = createRightId(clientId);
+    console.log("right id received:", createRightId(clientId));
 
     document.getElementById(left).setAttribute("position", userObj.left.pos);
     document.getElementById(left).setAttribute("rotation", userObj.left.rot);
     document.getElementById(right).setAttribute("position", userObj.right.pos);
     document.getElementById(right).setAttribute("rotation", userObj.right.rot);
   } catch (error) {
-    console.log(error);
+    console.error(error);
     console.log("WHY ISNT THIS WORKING");
-     console.log("client id", clientId)
+    console.log("client id", clientId);
     // if controllers do not exist yet, then create them
     createControllers(userObj, clientId);
   }
