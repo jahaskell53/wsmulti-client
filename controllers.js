@@ -51,7 +51,6 @@ export function updateControllers(userObj, clientId) {
   try {
     const left = createLeftId(clientId);
     const right = createRightId(clientId);
-    console.log("right id received:", createRightId(clientId));
 
     document.getElementById(left).setAttribute("position", userObj.left.pos);
     document.getElementById(left).setAttribute("rotation", userObj.left.rot);
