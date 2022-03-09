@@ -85,6 +85,11 @@ function createRightId(userId) {
   return createIdUsingSuffix(userId, "right");
 }
 
+function removeControllers(userId) {
+    document.getElementById(createLeftId(userId)).remove();
+    document.getElementById(createRightId(userId)).remove();
+}
+
 /**
  * takes in the current user's socket id, gets current user's pos data
  * so that script.js can send it to the server.
