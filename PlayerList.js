@@ -22,7 +22,7 @@ export default class PlayerList {
     // this.clientsObj.push(userObj);
     this.clientsObj[id] = userObj;
     // creates controllers for a new player
-    createControllers(userObj);
+    createControllers(userObj, id);
   }
 
   /**

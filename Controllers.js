@@ -23,6 +23,7 @@ export function createControllers(userObj, clientId) {
   });
   left.setAttribute("color", `#FFC65D`);
   // TODO: replace with right in front
+  console.log("client id from right created", clientId);
   console.log("right id created: ", createRightId(clientId));
   right.setAttribute("id", createRightId(clientId));
   // TODO: replace with constants
