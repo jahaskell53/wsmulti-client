@@ -51,44 +51,40 @@ export function updateControllers(userObj, clientId) {
     const left = createLeftId(clientId);
     const right = createRightId(clientId);
 
-    document
-      .querySelector(left)
-      .setAttribute("position", userObj.left.pos);
-    document
-      .querySelector(left)
-      .setAttribute("rotation", userObj.left.rot);
-    document
-      .querySelector(right)
-      .setAttribute("position", userObj.right.pos);
-    document
-      .querySelector(right)
-      .setAttribute("rotation", userObj.right.rot);
-  } catch (error) { // if controllers do not exist yet, then create them
+    document.querySelector(left).setAttribute("position", userObj.left.pos);
+    document.querySelector(left).setAttribute("rotation", userObj.left.rot);
+    document.querySelector(right).setAttribute("position", userObj.right.pos);
+    document.querySelector(right).setAttribute("rotation", userObj.right.rot);
+  } catch (error) {
+    console.log(error);
+    console.log("WHY ISNT THIS WORKING");
+     console.log("client id", clientId)
+    // if controllers do not exist yet, then create them
     createControllers(userObj, clientId);
   }
 }
 
 /**
  * helper function for creating id of controllers from user's id
- * @param {string} userId 
- * @param {string} suffix 
+ * @param {string} userId
+ * @param {string} suffix
  * @returns {string}
  */
 function createIdUsingSuffix(userId, suffix) {
-    const sliced = userId.slice(0, 5);
-    return `#a${sliced}-${suffix}`;
+  const sliced = userId.slice(0, 5);
+  return `#a${sliced}-${suffix}`;
 }
 
 /**
- * 
- * @param {string} userId 
+ *
+ * @param {string} userId
  */
 function createLeftId(userId) {
-    createIdUsingSuffix(userId, "left");
+  createIdUsingSuffix(userId, "left");
 }
 
 function createRightId(userId) {
-    createIdUsingSuffix(userId, "right");
+  createIdUsingSuffix(userId, "right");
 }
 
 /**

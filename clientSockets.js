@@ -23,7 +23,6 @@ window.setInterval(() => {
 
 // when the client receives data from another client, update the array of client objects and the corrsp graphical representation.
 socket.on("update-send", (userObj, clientId) => {
-  // updates the pos in the array and the corresponding graphical representation
   playerList.updatePos(userObj, clientId);
 });
 

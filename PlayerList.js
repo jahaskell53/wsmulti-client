@@ -44,10 +44,10 @@ export default class PlayerList {
 
   /**
    * takes in a client id and deletes that person's object from the array
-   * @param {string} clientId 
+   * @param {string} clientId
    */
   removePlayer(clientId) {
-      delete this.clientsObj[clientId];
+    delete this.clientsObj[clientId];
   }
 
   /**
@@ -56,9 +56,9 @@ export default class PlayerList {
    * @param {*} receivedObj
    */
   updatePos(receivedObj, clientId) {
-      // TODO: make this clode cleaner
-      // TODO: create obj with id as key
-      // TODO: replace arraylist of clients with dictionary of clients
+    // TODO: make this clode cleaner
+    // TODO: create obj with id as key
+    // TODO: replace arraylist of clients with dictionary of clients
     // check if clientObj exists, if it does not, then we create it and the controller
     // var index;
     // const corrClient = this.clientObjArr.filter((clientObj, ind) => {
@@ -69,8 +69,8 @@ export default class PlayerList {
     //   return false;
     // });
     // create an object for that key of the id if it is not already crewated
-    // TODO: do we really need to store an object of clients?
     this.clientsObj[clientId] = receivedObj;
+    console.log("clients obj", this.clientsObj);
     updateControllers(receivedObj, clientId);
     // if (this.clientsObj[clientId] !== null) {
     // //   this.clientsObj[index] = receivedObj;
