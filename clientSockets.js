@@ -1,7 +1,8 @@
-import { createMyObj } from "./Controllers.js";
+import { createMyObj } from "./controllers.js";
 import PlayerList from "./PlayerList.js";
 //conects us to server. must be www bc i think we set up certificate with www
 const socket = io("https://www.vrwikitest.com:3000");
+const INTERVAL = 50;
 // on client slide, stores id when connecting to a server
 var playerList; // declared for global scope
 socket.on("connect", () => {
@@ -15,14 +16,9 @@ socket.on("user-joined", (socketId) => {
 });
 
 // every few ms, send server a message with my updated obj
-const INTERVAL = 50;
 window.setInterval(() => {
-  try {
     // get pos data of controllers and send them to server.
     socket.emit("update-to", createMyObj(socket.id), socket.id);
-  } catch (error) {
-    console.error( error);
-  }
 }, INTERVAL);
 
 // when the client receives data from another client, update the array of client objects and the corrsp graphical representation.
@@ -30,3 +26,7 @@ socket.on("update-send", (userObj, clientId) => {
   // updates the pos in the array and the corresponding graphical representation
   playerList.updatePos(userObj, clientId);
 });
+
+socket.on('disconnect-send', (clientId) => {
+  playerList.removePlayer(clientId);
+})

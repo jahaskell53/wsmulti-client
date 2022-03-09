@@ -1,4 +1,4 @@
-import { createControllers, updateControllers } from "./Controllers.js";
+import { createControllers, updateControllers } from "./controllers.js";
 // TODO: remove players when they disconnect from socket
 /**
  * class for the list of player objects connected to the game other than the current user. contains methods that allow to create a new player obj, to get player obj for a particular id.
@@ -16,7 +16,6 @@ export default class PlayerList {
   createNewPlayer(id) {
     console.log(`user ${id} joined`);
     const userObj = {
-    //   id: id,
       left: { pos: `0 0 0`, rot: `0 0 0` },
       right: { pos: `0 0 0`, rot: `0 0 0` },
     };
@@ -41,6 +40,14 @@ export default class PlayerList {
     // // TODO: throw error
     // return null;
     return this.clientsObj[id];
+  }
+
+  /**
+   * takes in a client id and deletes that person's object from the array
+   * @param {string} clientId 
+   */
+  removePlayer(clientId) {
+      delete this.clientsObj[clientId];
   }
 
   /**
