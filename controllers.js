@@ -5,36 +5,37 @@
  * @param {*} userObj
  */
 export function createControllers(userObj, clientId) {
+  const CONE_HEIGHT = 0.3;
+  const CONE_RADIUS_BOTTOM = 0.1;
+  const CONE_RADIUS_TOP = 0.01;
+  const CONE_LEFT_COLOR = `#FFC65D`;
+  const CONE_RIGHT_COLOR = `#7BC8A4`;
+
   const left = document.createElement("a-cone");
   const right = document.createElement("a-cone");
   const scene = document.querySelector("a-scene");
+
   scene.appendChild(left);
   scene.appendChild(right);
-  // TODO: put left on front
+
+  function setControllerProps(controller) {
+    controller.setAttribute("geometry", {
+        primitive: "cone",
+        height: CONE_HEIGHT,
+        radiusBottom: CONE_RADIUS_BOTTOM,
+        radiusTop: CONE_RADIUS_TOP,
+      });
+  }
+  
+  setControllerProps(left);
+  setControllerProps(right);
+
   left.setAttribute("id", createLeftId(clientId));
-  // left.setAttribute("height", `0.5`);
-  // left.setAttribute("radiusBottom", `0.1`);
-  // geometry="primitive: cone; radiusBottom: 1; radiusTop: 0.1"
-  left.setAttribute("geometry", {
-    primitive: "cone",
-    height: 0.3,
-    radiusBottom: 0.1,
-    radiusTop: 0.01,
-  });
-  left.setAttribute("color", `#FFC65D`);
-  // TODO: replace with right in front
-  console.log("client id from right created", clientId);
-  console.log("right id created: ", createRightId(clientId));
+  left.setAttribute("color", CONE_LEFT_COLOR);
+
   right.setAttribute("id", createRightId(clientId));
-  // TODO: replace with constants
-  right.setAttribute("geometry", {
-    primitive: "cone",
-    height: 0.3,
-    radiusBottom: 0.1,
-    radiusTop: 0.01,
-  });
-  right.setAttribute("color", `#7BC8A4`);
-  // intialization of positon
+  right.setAttribute("color", CONE_RIGHT_COLOR);
+
   // TODO: factor out to helper function
   left.setAttribute("position", userObj.left.pos);
   left.setAttribute("rotation", userObj.left.rot);
@@ -57,9 +58,6 @@ export function updateControllers(userObj, clientId) {
     document.getElementById(right).setAttribute("position", userObj.right.pos);
     document.getElementById(right).setAttribute("rotation", userObj.right.rot);
   } catch (error) {
-    console.error(error);
-    console.log("WHY ISNT THIS WORKING");
-    console.log("client id", clientId);
     // if controllers do not exist yet, then create them
     createControllers(userObj, clientId);
   }
