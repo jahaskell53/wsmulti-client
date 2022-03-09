@@ -85,7 +85,7 @@ function createRightId(userId) {
   return createIdUsingSuffix(userId, "right");
 }
 
-function removeControllers(userId) {
+export function removeControllers(userId) {
     document.getElementById(createLeftId(userId)).remove();
     document.getElementById(createRightId(userId)).remove();
 }
