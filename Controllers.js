@@ -81,11 +81,11 @@ function createIdUsingSuffix(userId, suffix) {
  * @param {string} userId
  */
 function createLeftId(userId) {
-  createIdUsingSuffix(userId, "left");
+  return createIdUsingSuffix(userId, "left");
 }
 
 function createRightId(userId) {
-  createIdUsingSuffix(userId, "right");
+  return createIdUsingSuffix(userId, "right");
 }
 
 /**
