@@ -1,4 +1,3 @@
-// TODO: replace filename with lowercase
 /*
  * takes in a user object and creates two controllers (left and right)
  * with id of the user's socket id + a left/right extension
@@ -20,23 +19,22 @@ export function createControllers(userObj, clientId) {
 
   function setControllerProps(controller) {
     controller.setAttribute("geometry", {
-        primitive: "cone",
-        height: CONE_HEIGHT,
-        radiusBottom: CONE_RADIUS_BOTTOM,
-        radiusTop: CONE_RADIUS_TOP,
-      });
+      primitive: "cone",
+      height: CONE_HEIGHT,
+      radiusBottom: CONE_RADIUS_BOTTOM,
+      radiusTop: CONE_RADIUS_TOP,
+    });
   }
-  
+
   setControllerProps(left);
   setControllerProps(right);
 
-  left.setAttribute("id", createLeftId(clientId));
+  left.setAttribute("id", createLeftControllerId(clientId));
   left.setAttribute("color", CONE_LEFT_COLOR);
 
-  right.setAttribute("id", createRightId(clientId));
+  right.setAttribute("id", createRightControllerId(clientId));
   right.setAttribute("color", CONE_RIGHT_COLOR);
 
-  // TODO: factor out to helper function
   left.setAttribute("position", userObj.left.pos);
   left.setAttribute("rotation", userObj.left.rot);
   right.setAttribute("position", userObj.right.pos);
@@ -45,12 +43,13 @@ export function createControllers(userObj, clientId) {
 
 /**
  * takes in a user object and id and sets the position of that user's controllers accordingly
- * @param {*} userObj
+ * @param {object} userObj
+ * @param {string} clientId
  */
 export function updateControllers(userObj, clientId) {
   try {
-    const left = createLeftId(clientId);
-    const right = createRightId(clientId);
+    const left = createLeftControllerId(clientId);
+    const right = createRightControllerId(clientId);
 
     document.getElementById(left).setAttribute("position", userObj.left.pos);
     document.getElementById(left).setAttribute("rotation", userObj.left.rot);
@@ -64,54 +63,50 @@ export function updateControllers(userObj, clientId) {
 
 /**
  * helper function for creating id of controllers from user's id
+ * suffix is either left or right
  * @param {string} userId
  * @param {string} suffix
  * @returns {string}
  */
-function createIdUsingSuffix(userId, suffix) {
+function createControllerId(userId, suffix) {
   const sliced = userId.slice(0, 5);
+  // appends a as prefix since ids must start with letters, and socket ids dont always do
   return `a${sliced}-${suffix}`;
 }
 
-/**
- *
- * @param {string} userId
- */
-function createLeftId(userId) {
-  return createIdUsingSuffix(userId, "left");
+function createLeftControllerId(userId) {
+  return createControllerId(userId, "left");
 }
 
-function createRightId(userId) {
-  return createIdUsingSuffix(userId, "right");
+function createRightControllerId(userId) {
+  return createControllerId(userId, "right");
 }
 
 export function removeControllers(userId) {
-    document.getElementById(createLeftId(userId)).remove();
-    document.getElementById(createRightId(userId)).remove();
+  document.getElementById(createLeftControllerId(userId)).remove();
+  document.getElementById(createRightControllerId(userId)).remove();
 }
 
 /**
  * takes in the current user's socket id, gets current user's pos data
- * so that script.js can send it to the server.
  * @param {string} id
  * @returns
  */
-export function createMyObj(id) {
+export function createMySendData(id) {
   if (id === null)
     throw "your id is null, there is no established connection to socket";
   const leftPos = document.getElementById("left-con").getAttribute("position");
+  const rightPos = document.getElementById("right-con").getAttribute("position");
+
   const leftRot = document.getElementById("left-con").getAttribute("rotation");
-  const rightPos = document
-    .getElementById("right-con")
-    .getAttribute("position");
-  const rightRot = document
-    .getElementById("right-con")
-    .getAttribute("rotation");
+  const rightRot = document.getElementById("right-con").getAttribute("rotation");
 
   const leftPosString = `${leftPos.x} ${leftPos.y} ${leftPos.z}`;
   const leftRotString = `${leftRot.x} ${leftRot.y} ${leftRot.z}`;
+
   const rightPosString = `${rightPos.x} ${rightPos.y} ${rightPos.z}`;
   const rightRotString = `${rightRot.x} ${rightRot.y} ${rightRot.z}`;
+
   const posObj = {
     left: { pos: leftPosString, rot: leftRotString },
     right: { pos: rightPosString, rot: rightRotString },
