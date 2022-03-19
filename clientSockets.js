@@ -1,9 +1,9 @@
 import { createMySendData } from "./controllers.js";
 import PlayerList from "./PlayerList.js";
-const SERVER_ADDRESS = "https://www.vrwikitest.com:3000";
+const SERVER_URL = process.env.SERVER_URL;
 const INTERVAL = 50;
 
-const socket = io(SERVER_ADDRESS);
+const socket = io(SERVER_URL);
 var playerList; // declared for global scope
 socket.on("connect", () => {
   console.log("you connected with id: ", socket.id);
