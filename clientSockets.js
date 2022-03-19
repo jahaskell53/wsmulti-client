@@ -1,5 +1,7 @@
 import { createMySendData } from "./controllers.js";
 import PlayerList from "./PlayerList.js";
+import "dotenv/config";
+
 const SERVER_URL = process.env.SERVER_URL;
 const INTERVAL = 50;
 
@@ -17,13 +19,13 @@ socket.on("user-joined", (socketId) => {
 
 // constantly update send server new pos data
 window.setInterval(() => {
-    socket.emit("update-to", createMySendData(socket.id), socket.id);
+  socket.emit("update-to", createMySendData(socket.id), socket.id);
 }, INTERVAL);
 
 socket.on("update-send", (userObj, clientId) => {
   playerList.updatePos(userObj, clientId);
 });
 
-socket.on('disconnect-send', (clientId) => {
+socket.on("disconnect-send", (clientId) => {
   playerList.removePlayer(clientId);
-})
+});
