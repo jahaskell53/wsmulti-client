@@ -95,6 +95,10 @@ export function removeControllers(userId) {
 export function createMySendData(id) {
   if (id === null)
     throw "your id is null, there is no established connection to socket";
+  return createPosObj();
+}
+
+function createPosObj() {
   const leftPos = document.getElementById("left-con").getAttribute("position");
   const rightPos = document.getElementById("right-con").getAttribute("position");
 
@@ -113,3 +117,4 @@ export function createMySendData(id) {
   };
   return posObj;
 }
+
