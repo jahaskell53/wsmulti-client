@@ -99,22 +99,22 @@ export function createMySendData(id) {
 }
 
 function createPosObj() {
-  const leftPos = document.getElementById("left-con").getAttribute("position");
-  const rightPos = document.getElementById("right-con").getAttribute("position");
+  const leftPosString = createStringFromObj(document.getElementById("left-con").getAttribute("position"));
+  const leftRotString = createStringFromObj(document.getElementById("left-con").getAttribute("rotation"));;
+  const rightPosString = createStringFromObj(document.getElementById("right-con").getAttribute("position"));
+  const rightRotString = createStringFromObj(document.getElementById("right-con").getAttribute("rotation"));
 
-  const leftRot = document.getElementById("left-con").getAttribute("rotation");
-  const rightRot = document.getElementById("right-con").getAttribute("rotation");
+  return createPosObj(leftPosString, leftRotString, rightPosString, rightRotString);
+}
 
-  const leftPosString = `${leftPos.x} ${leftPos.y} ${leftPos.z}`;
-  const leftRotString = `${leftRot.x} ${leftRot.y} ${leftRot.z}`;
+function createStringFromObj(obj) {
+  return `${obj.x} ${obj.y} ${obj.z}`;
+}
 
-  const rightPosString = `${rightPos.x} ${rightPos.y} ${rightPos.z}`;
-  const rightRotString = `${rightRot.x} ${rightRot.y} ${rightRot.z}`;
-
-  const posObj = {
+function createPosObj(leftPosString, leftRotString, rightPosString, rightRotString) {
+  return {
     left: { pos: leftPosString, rot: leftRotString },
     right: { pos: rightPosString, rot: rightRotString },
   };
-  return posObj;
 }
 
