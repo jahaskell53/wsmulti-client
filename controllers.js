@@ -94,24 +94,24 @@ export function removeControllers(userId) {
  */
 export function createMySendData(id) {
   if (id === null)
-    throw "your id is null, there is no established connection to socket";
-  return createPosObj();
+    throw new Error("your id is null, there is no established connection to socket");
+  return createSendObj();
 }
 
-function createPosObj() {
+function createSendObj() {
   const leftPosString = createStringFromObj(document.getElementById("left-con").getAttribute("position"));
   const leftRotString = createStringFromObj(document.getElementById("left-con").getAttribute("rotation"));;
   const rightPosString = createStringFromObj(document.getElementById("right-con").getAttribute("position"));
   const rightRotString = createStringFromObj(document.getElementById("right-con").getAttribute("rotation"));
 
-  return createPosObj(leftPosString, leftRotString, rightPosString, rightRotString);
+  return createSendObjFromString(leftPosString, leftRotString, rightPosString, rightRotString);
 }
 
 function createStringFromObj(obj) {
   return `${obj.x} ${obj.y} ${obj.z}`;
 }
 
-function createPosObj(leftPosString, leftRotString, rightPosString, rightRotString) {
+function createSendObjFromString(leftPosString, leftRotString, rightPosString, rightRotString) {
   return {
     left: { pos: leftPosString, rot: leftRotString },
     right: { pos: rightPosString, rot: rightRotString },
