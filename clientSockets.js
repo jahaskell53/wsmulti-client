@@ -1,8 +1,8 @@
 import { createMySendData } from "./controllers.js";
 import PlayerList from "./PlayerList.js";
-import "dotenv/config";
+// import "dotenv/config";
 
-const SERVER_URL = process.env.SERVER_URL;
+const SERVER_URL = "https://www.vrwikitest.com:3000";
 const INTERVAL = 50;
 
 const socket = io(SERVER_URL);
